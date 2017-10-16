@@ -7,13 +7,13 @@ properties.max_speed_for_map_matching      = 220/3.6 -- 220kmph -> m/s
 properties.weight_name                     = 'duration'
 properties.left_hand_driving = true
 properties.use_turn_restrictions = true
+properties.u_turn_penalty = 20
 
 local config = {
   speed = 120,
-  secondary_speed = 10,
+  secondary_speed = 5,
   max_angle = 30,
   turn_time = 20,
-
 }
 
 function ternary ( cond , T , F )
@@ -29,16 +29,12 @@ function way_function(way, result)
     usage = way:get_value_by_key("usage"),
     name = way:get_value_by_key("name"),
     ref = way:get_value_by_key("ref"),
-    maxspeed = way:get_value_by_key("maxspeed"),
-    oneway = way:get_value_by_key("oneway"),
-    highspeed = way:get_value_by_key("highspeed") -- unused, could be used to exclude freight
   }
 
   if (
     not data.railway or
     data.railway ~= 'rail' or
-    data.usage == "military" or
-    data.usage == "tourism"
+    data.usage == "military"
   )
   then
     return

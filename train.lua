@@ -30,7 +30,7 @@ function way_function(way, result)
     name = way:get_value_by_key("name"),
     ref = way:get_value_by_key("ref"),
     maxspeed = way:get_value_by_key("maxspeed"),
-    oneway = way:get_value_by_key("oneway")
+    oneway = way:get_value_by_key("oneway"),
     highspeed = way:get_value_by_key("highspeed") -- unused, could be used to exclude freight
   }
 
